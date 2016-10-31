@@ -23,7 +23,7 @@ public class Pathmaker : MonoBehaviour {
 				transform.Rotate (0f, 90f, 0f);
 			} else if (randomNumber > 0.25f && randomNumber < 0.5f) {
 				transform.Rotate (0, -90f, 0f);
-			} else if (randomNumber > 0.70f && numberOfPathmakers < 10) {
+			} else if (randomNumber > 0.70f && numberOfPathmakers < 5) {
 				Instantiate (pathmakerSpherePrefab, transform.position, transform.rotation);
 				numberOfPathmakers += 1; 
 			}
@@ -34,7 +34,7 @@ public class Pathmaker : MonoBehaviour {
 			pathmakerLifeTime += 1;
 		} 
 
-		if (pathmakerLifeTime == tilesPerPathmaker || numberOfTiles > 500){
+		if (pathmakerLifeTime == tilesPerPathmaker || numberOfTiles > 499){
 			numberOfPathmakers -= 1;
 			Debug.Log (numberOfTiles);
 			Destroy (gameObject);
