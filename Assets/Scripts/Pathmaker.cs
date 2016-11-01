@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Pathmaker : MonoBehaviour {
 
-	public Transform floorPrefab, spikePreFab;
+	public Transform floorPrefab, spikePreFab, treasureChestPreFab;
 	public Transform pathmakerSpherePrefab; 
 	public int pathmakerLifeTime = 0; 
 	public int tilesPerPathmaker; 
