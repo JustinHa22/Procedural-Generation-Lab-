@@ -12,6 +12,7 @@ public class Pathmaker : MonoBehaviour {
 	public int rotationDecider; 
 	public float spikesOrFloor; 
 	public static int numberOfTiles; 
+	public int resetTiles; 
 
 	public static int numberOfPathmakers = 0;
 
@@ -20,6 +21,8 @@ public class Pathmaker : MonoBehaviour {
 		tilesPerPathmaker = Random.Range(35, 50);
 
 		rotationDecider = Random.Range (1, 4);
+
+		numberOfTiles = resetTiles;
 
 	}
 
@@ -60,7 +63,6 @@ public class Pathmaker : MonoBehaviour {
 			numberOfPathmakers -= 1;
 			Debug.Log (numberOfTiles);
 			Destroy (gameObject);
-			Debug.Log ("working");
 		}
 
 	}
