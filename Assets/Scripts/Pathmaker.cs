@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI; 
+using UnityEngine.SceneManagement;
 
 public class Pathmaker : MonoBehaviour {
 
-	public Transform floorPrefab;
+	public Transform floorPrefab, spikePreFab;
 	public Transform pathmakerSpherePrefab; 
 	public int pathmakerLifeTime = 0; 
 	public int tilesPerPathmaker; 
@@ -12,7 +14,11 @@ public class Pathmaker : MonoBehaviour {
 	public static int numberOfPathmakers = 0;
 
 	void Start(){
+
 		tilesPerPathmaker = Random.Range(35, 50);
+
+
+
 	}
 
 	// Update is called once per frame
