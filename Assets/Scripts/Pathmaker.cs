@@ -9,6 +9,7 @@ public class Pathmaker : MonoBehaviour {
 	public Transform pathmakerSpherePrefab; 
 	public int pathmakerLifeTime = 0; 
 	public int tilesPerPathmaker; 
+	public float spikesOrFloor; 
 	public static int numberOfTiles; 
 
 	public static int numberOfPathmakers = 0;
@@ -17,7 +18,7 @@ public class Pathmaker : MonoBehaviour {
 
 		tilesPerPathmaker = Random.Range(35, 50);
 
-
+		spikesOrFloor = Random.Range (0f, 1f);
 
 	}
 
@@ -33,14 +34,27 @@ public class Pathmaker : MonoBehaviour {
 				Instantiate (pathmakerSpherePrefab, transform.position, transform.rotation);
 				numberOfPathmakers += 1; 
 			}
-			Instantiate (floorPrefab, transform.position, transform.rotation);
-			transform.Translate (0f, 0f, 5f);
-			//counter += 1;
-			numberOfTiles += 1; 
-			pathmakerLifeTime += 1;
+
+			if (spikesOrFloor < 0.8f) {
+				Instantiate (floorPrefab, transform.position, transform.rotation);
+				transform.Translate (0f, 0f, 5f);
+				numberOfTiles += 1; 
+				pathmakerLifeTime += 1;
+			} else if (spikesOrFloor >= .8f) {
+				Instantiate (spikePreFab, transform.position, transform.rotation);
+				transform.Translate (0f, 0f, 5f);
+				numberOfTiles += 1; 
+				pathmakerLifeTime += 1;
+			}
+			if (numberOfTiles > 499) {
+				Instantiate (treasureChestPreFab, transform.position, transform.rotation);
+				transform.Translate (0f, 0f, 5f);
+				numberOfTiles += 1; 
+				pathmakerLifeTime += 1;
+			}
 		} 
 
-		if (pathmakerLifeTime == tilesPerPathmaker || numberOfTiles > 499){
+		if (pathmakerLifeTime == tilesPerPathmaker || numberOfTiles > 498){
 			numberOfPathmakers -= 1;
 			Debug.Log (numberOfTiles);
 			Destroy (gameObject);
