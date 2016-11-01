@@ -9,6 +9,7 @@ public class Pathmaker : MonoBehaviour {
 	public Transform pathmakerSpherePrefab; 
 	public int pathmakerLifeTime = 0; 
 	public int tilesPerPathmaker; 
+	public int rotationDecider; 
 	public float spikesOrFloor; 
 	public static int numberOfTiles; 
 
@@ -18,18 +19,19 @@ public class Pathmaker : MonoBehaviour {
 
 		tilesPerPathmaker = Random.Range(35, 50);
 
-		spikesOrFloor = Random.Range (0f, 1f);
+		rotationDecider = Random.Range (1, 4);
 
 	}
 
 	// Update is called once per frame
 	void Update () {
 		if ( numberOfTiles < 500) {
+			float spikesOrFloor = Random.value;
 			float randomNumber = Random.value;
 			if (randomNumber < 0.25f) {
-				transform.Rotate (0f, 90f, 0f);
+				transform.Rotate (0f, rotationDecider * 90f, 0f);
 			} else if (randomNumber > 0.25f && randomNumber < 0.5f) {
-				transform.Rotate (0, -90f, 0f);
+				transform.Rotate (0, rotationDecider * -90f, 0f);
 			} else if (randomNumber > 0.70f && numberOfPathmakers < 5) {
 				Instantiate (pathmakerSpherePrefab, transform.position, transform.rotation);
 				numberOfPathmakers += 1; 
@@ -54,11 +56,12 @@ public class Pathmaker : MonoBehaviour {
 			}
 		} 
 
-		if (pathmakerLifeTime == tilesPerPathmaker || numberOfTiles > 498){
+		if (pathmakerLifeTime == tilesPerPathmaker || numberOfTiles > 499){
 			numberOfPathmakers -= 1;
 			Debug.Log (numberOfTiles);
 			Destroy (gameObject);
 			Debug.Log ("working");
 		}
+
 	}
 }
