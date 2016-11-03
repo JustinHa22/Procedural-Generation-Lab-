@@ -64,6 +64,8 @@ public class Pathmaker : MonoBehaviour {
 			Debug.Log (numberOfTiles);
 			Destroy (gameObject);
 		}
+		Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition); 
 
+		RaycastHit rayHit = new RaycastHit (); 
 	}
 }
